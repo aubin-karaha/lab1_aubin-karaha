@@ -29,11 +29,11 @@ def load_csv_data():
                 })
         return assignments
     except Exception as e:
-        print(f"An error occured while reading the file: " + str(e))
+        print("An error occured while reading the file: " + str(e))
         sys.exit(1)
 
     
-    def evaluate_grade(data):
+def evaluate_grade(data):
         
     """
     This function does all the checking and math.
@@ -49,7 +49,7 @@ def load_csv_data():
 
     for record in data:
         current_score = record['score']
-        if current_score > 0 or current_score < 100:
+        if current_score < 0 or current_score > 100:
             print("Error: Assignment '" + record['assignment'] + "' has an invalid score of " + str(current_score) + ".")
             print("Scores must be between 0 and 100. Please fix the CSV and try again")
             return
@@ -72,11 +72,11 @@ def load_csv_data():
         return
 
     if formative_weight != 60:
-        print("Error: Total weight must be equal to 100. Right now it add up to " + str(formative_weight) + ".")
+        print("Error: Total weight must be equal to 60. Right now it add up to " + str(formative_weight) + ".")
         return
 
     if summative_weight != 40:
-        print("Error: Total weight must be equal to 100. Right now it add up to " + str(summative_weight) + ".")
+        print("Error: Total weight must be equal to 40. Right now it add up to " + str(summative_weight) + ".")
         return
 
     formative_points = 0
@@ -122,7 +122,7 @@ def load_csv_data():
             failed_formatives.append(record)
 
 
-        if len(failed_formatives) == 0:
+    if len(failed_formatives) == 0:
             print("Available for resubmission: None")
             return
 
@@ -133,7 +133,7 @@ def load_csv_data():
         if record['weight'] > highest_weight:
             highest_weight = record['weight']
 
-"""Finding which formatives to resubmit based on the one with the highest weight"""
+    """Finding which formatives to resubmit based on the one with the highest weight"""
     
     formatives_to_resubmit = ""
 
@@ -154,6 +154,6 @@ if __name__ == "__main__":
 
     course_data = load_csv_data()
 
-    evaluate_grades(course_data)
+    evaluate_grade(course_data)
 
 
