@@ -31,7 +31,7 @@ assignment,group,score,weight
 - Score must be between 0 and 100,or the script stops with an error
 - Passing requires at least 50% of possible points in both Formative and Summative groups
 - Resubmission applies only to Formative assignments scoring below 50; if more than one shares the highest weight, all are listed
-- Missing or empty `grades.csv` is handled with a message instead of crashing
+- Missing or empty `grades.csv` is handled with a message instead of crashing since we used an exception
 
 ## Running organizer.sh
 
@@ -49,5 +49,5 @@ What happens:
 ## Workflow
 
 1. Fill in `grades.csv`
-2. Run `grade-evaluator.py` to check GPA and status
+2. Run `grade-evaluator.py` to check GPA and Pass/Fail status
 3. Run `organizer.sh` to archive and reset
