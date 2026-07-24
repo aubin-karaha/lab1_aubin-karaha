@@ -13,7 +13,7 @@ timestamp=$(date +"%Y%m%d-%H%M%S")
 
 # Checking whether grades.csv file is in the current directory
 
-if [ ! -f "grade.csv" ]; then
+if [ ! -f "grades.csv" ]; then
 	echo "Error: grades.csv file was not found in the current directory"
 	exit 1
 fi
